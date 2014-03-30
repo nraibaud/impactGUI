@@ -406,9 +406,9 @@ ig.module(
                         var prev = ig.gui.styleSheets.getPreviousVisibleObject.call(that);
 
                         if (prev && that.styleParsed.position != 'absolute' && that.styleParsed.display === 'inline') {
-                            val += prev.styleParsed.left + prev.styleParsed.width;
+                          val += prev.styleParsed.left + prev.styleParsed.width;
                         } else {
-                            val += parent.styleParsed.left;
+                           val += parent.styleParsed.left;
                         }
 
                         break;

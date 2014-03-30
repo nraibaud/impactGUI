@@ -71,7 +71,8 @@ ig.module(
             // Simple proxy to `ig.gui.history` to save a fragment into the history.
             navigate: function (fragment, options) {
                 if (!options || options === true) options = {trigger: options};
-                if (this.fragment === fragment) return;
+                // todo fix on gitub
+                //if (this.fragment === fragment) return;
                 this.fragment = fragment;
                 var url = this.root + fragment;
 

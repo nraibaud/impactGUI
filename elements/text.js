@@ -223,7 +223,7 @@ ig.module(
                 this.style.height = prevY;//this.styles.height != 'auto' ? this.styles.height : prevY;
 
                 // todo temp should be remove
-                ig.gui.styleSheets.init.call(this);
+            //    ig.gui.styleSheets.init.call(this);
 
 
             }

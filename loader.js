@@ -110,8 +110,9 @@ ig.module(
             _loadCallback: function (path, status) {
                 var type, format;
 
-                format = path.match(/\.([a-zA-Z0-9])+$/);
-;
+
+                format = path.match(/\.([a-zA-Z0-9\*])+$/);
+
                 switch (format[0]) {
                     case '.jpg':
                     case '.png':
@@ -119,7 +120,7 @@ ig.module(
                         break;
                     case '.mp3':
                     case '.ogg':
-                        type = 'Son';
+                        type = 'Sound';
                         break;
                     default:
                         type = 'Resource';
