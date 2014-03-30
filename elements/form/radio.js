@@ -46,7 +46,6 @@ ig.module(
             setEvents: function () {
                 this.bind('pressed:MOUSE1', {}, function (properties) {
                     this.style.background = this.style.background || this.styles.background;
-                    console.log(this.style.background);
 
                     if (!this.checked) {
                         this.checked = true;

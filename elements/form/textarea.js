@@ -76,7 +76,6 @@ ig.module(
                 this.parent(options);
             },
             draw: function () {
-                console.log(this.styleParsed.top);
                 ig.gui.drawBackgrounds.call(this);
                 this.parent();
             }

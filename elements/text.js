@@ -121,7 +121,6 @@ ig.module(
                 var fontSize = parseInt(this.styleParsed['font-size']);
                 // todo text align
                 //var ta = (this.parentElement.styleParsed['width'] - this.styleParsed['width']) / 2;
-                //console.log(this.parentElement.styleParsed['width'], this.styleParsed['width']);
                 // todo others
                 //var va = (this.styleParsed['height'] - fontSize) / 2;
 

@@ -125,7 +125,6 @@ ig.module(
                                 ? area[i + k][j + l]
                                 : null;
                             var nextTilePattern = pattern[k][l];
-                            //console.warn(tile,nextTile,i,j,k,l);
 
 
                             if (nextTile === nextTilePattern || (nextTilePattern === 'X' && nextTile > 0)) {

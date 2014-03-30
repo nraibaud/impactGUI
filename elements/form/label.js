@@ -44,7 +44,6 @@ ig.module(
                         stopPropagation: true
                     },
                     function () {
-                        console.log(  that.for.focus);
                         that.for.focus();
                     });
 

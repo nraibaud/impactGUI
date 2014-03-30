@@ -414,7 +414,6 @@ ig.module(
                             (this.styleParsed.top + this.styleParsed.height >= element.styleParsed.top) && ( this.styleParsed.top <= (element.styleParsed.top + element.styleParsed.height))
                         ) {
 
-                        //    console.warn('l:' + this.styleParsed.left, 't:' + this.styleParsed.top, 'w:' + this.styleParsed.width, 'h:' + this.styleParsed.height, 'X:' + ig.input.mouse.x, 'Y:' + ig.input.mouse.y,'type:'+ this.type,'name:'+ this.name);
 
                         return true;
                     } else {
@@ -426,7 +425,6 @@ ig.module(
                             (ig.input.mouse.y >= (this.styleParsed.top)) && ( ig.input.mouse.y <= ((this.styleParsed.top) + this.styleParsed.height))
                         ) {
 
-                        //    console.warn('l:' + this.styleParsed.left, 't:' + this.styleParsed.top, 'w:' + this.styleParsed.width, 'h:' + this.styleParsed.height, 'X:' + ig.input.mouse.x, 'Y:' + ig.input.mouse.y,'type:'+ this.type,'name:'+ this.name);
 
                         return true;
                     } else {

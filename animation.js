@@ -94,8 +94,6 @@ ig.module(
 
                 });
 
-//                console.info(that.element.style.left,that.element.styleParsed.left);
-
 
                 if (that.timer.delta() >= that.duration) {
                     that.stop();

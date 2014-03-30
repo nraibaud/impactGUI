@@ -23,7 +23,6 @@ ig.module(
 
                 that = this, move = function () {
                     if (that.element.isDragging) {
-                        console.log("k");
                         that.element.style.left = that.left + (ig.input.mouse.x - that.pos.x) + ig.system.tick;
                         that.element.style.top = that.top + (ig.input.mouse.y - that.pos.y) + ig.system.tick;
                     }

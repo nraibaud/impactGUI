@@ -77,7 +77,6 @@ ig.module(
                 ig.gui.canvas.bind('released:MOUSE1', {
                     stopPropagation: true
                 }, function () {
-                    console.warn('release');
                     that.isDragging = false;
                     that.dropped = true;
                 });
