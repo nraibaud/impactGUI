@@ -186,6 +186,7 @@ ig.module(
                 }
 
                 /* Draw  stylesheets */
+                // todo should only called when redraw.
                 ig.gui.styleSheets.draw.call(this);
 
                 /* Draw children */

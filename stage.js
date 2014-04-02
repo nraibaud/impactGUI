@@ -17,7 +17,6 @@ ig.module(
                 display: 'block'
             },
             render: function () {
-                this.show().redraw();
                 ig.system.setGame(this.stage.extend(this.stageOptions));
             }
         });
