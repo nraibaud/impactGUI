@@ -189,10 +189,12 @@ ig.module(
                 // todo should only called when redraw.
                 ig.gui.styleSheets.draw.call(this);
 
-                /* Draw children */
-                this.loopOnChildren(function () {
-                    this.draw();
-                });
+                if (this.type === 'canvas') {
+                    /* Draw children */
+                    this.loopOnChildren(function () {
+                        this.draw();
+                    });
+                }
 
             },
             _setGuid: function () {
