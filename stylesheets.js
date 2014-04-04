@@ -505,6 +505,7 @@ ig.module(
                         break;
                 }
 
+
                 return val;
             },
             draw: function () {
@@ -544,5 +545,4 @@ ig.module(
     }
 );
 
-// todo height,width auto,right,bottom
-// todo set height on image using ratio * img
+// todo height and width auto for all ,right,bottom

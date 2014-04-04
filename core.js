@@ -197,12 +197,6 @@ ig.module(
                 }
 
             },
-            _setGuid: function () {
-                this.guid = this._generateGuid();
-            },
-            _generateGuid: function () { // todo temp
-                return 0;
-            },
             add: function (element) {
                 var self;
 
@@ -453,30 +447,6 @@ ig.module(
             },
             getByType: function () {
 
-            },
-            transformTag: function (tagName) { // todo using tag
-                switch (tagName) {
-                    case 'LAYER' :
-                        break;
-                    case 'TEXT' :
-                        break;
-                    case 'AUDIO' :
-                        break;
-                    case 'VIDEO' :
-                        break;
-                    case 'FORM' :
-                        break;
-                    case 'INPUT_TEXT' :
-                        break;
-                    case 'TEXTAREA' :
-                        break;
-                    case 'RADIO' :
-                        break;
-                    case 'CHECKBOX' :
-                        break;
-                    case 'SELECT' :
-                        break;
-                }
             },
             addClass: function (className) {
                 this.class += ' ' + className;

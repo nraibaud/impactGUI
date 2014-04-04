@@ -44,6 +44,8 @@ ig.module(
                 this.style.width = this.styles.width != 'auto' ? this.styles.width : size.width;
                 this.style.height = this.styles.height != 'auto' ? this.styles.height : size.height;
 
+                ig.gui.styleSheets.init.call(this);
+
 
             }
 
