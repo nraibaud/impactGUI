@@ -13,13 +13,6 @@ ig.module(
             name: 'loader'
         });
 
-        ig.gui.styleSheets.addRules({
-            'txt-1': {
-                color: '#F47920',
-                'font-size': '32px'
-            }
-        });
-
         ig.gui.Loader.inject({
             bgStyle: {
                 url: 'lib/plugins/gui/loader.png',
@@ -54,13 +47,13 @@ ig.module(
                     style: {
                         background: [
                             {
-                                name: 'loaderBgColor', // todo other settings should be apply, name is not apply !
+                                name: 'loaderBgColor',
                                 style: {
                                     color: 'black' //#24272a
                                 }
                             },
                             {
-                                name: 'loaderBgImage', // todo other settings should be apply, name is not apply !
+                                name: 'loaderBgImage',
                                 style: this.bgStyle
                             }
                         ]
@@ -126,7 +119,7 @@ ig.module(
                         type = 'Resource';
                 }
 
-                this.contentType.content = '<text class="txt-1">' + type + '</text> [' + path + ']'; // todo should be a json object !!!
+                this.contentType.content = type + '[' + path + ']';
 
                 // todo bug here
                 var nbPoints = parseInt(this.gameLoader.styleParsed.width / 18, 10) / this.resources.length;
@@ -149,6 +142,3 @@ ig.module(
         });
 
     });
-
-// todo all values can be a function !
-// todo sizeFrom,positionFrom
