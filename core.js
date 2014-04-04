@@ -245,8 +245,8 @@ ig.module(
                 this.children = [];
                 return this;
             },
-            reset: function () {
-                this.removeAllChildren().init();
+            reset: function (options) {
+                this.removeAllChildren().init(options);
                 return this;
             },
             addActions: function (actions) {

@@ -400,7 +400,7 @@ ig.module(
                         }
                         /* center */
                         else if (val === 'center') {
-                            val = (parent.styleParsed.width - this.styleParsed.width) / 2
+                            val = (parent.styleParsed.width - this.styleParsed.width) / 2;
                         }
 
                         var prev = ig.gui.styleSheets.getPreviousVisibleObject.call(that);
@@ -408,7 +408,7 @@ ig.module(
                         if (prev && that.styleParsed.position != 'absolute' && that.styleParsed.display === 'inline') {
                             val += prev.styleParsed.left + prev.styleParsed.width;
                         } else {
-                           val += parent.styleParsed.left;
+                            val += parent.styleParsed.left;
                         }
 
                         break;
@@ -424,7 +424,7 @@ ig.module(
                         }
                         /* center */
                         else if (val === 'center') {
-                            val = (parent.styleParsed.height - this.styleParsed.height) / 2
+                            val = (parent.styleParsed.height - this.styleParsed.height) / 2;
                         }
 
 
