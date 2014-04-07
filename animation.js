@@ -110,7 +110,7 @@ ig.module(
 
                 this.onDraw();
 
-                ig.gui.styleSheets.draw.call(this);
+                //ig.gui.styleSheets.draw.call(this);
 
                 this.parent();
 

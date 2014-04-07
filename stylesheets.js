@@ -271,15 +271,20 @@ ig.module(
                         backgroundsLength = val.length;
 
                         for (i; i < backgroundsLength; i++) {
-                            delete that.styleParsed[property][i];
-                            that.styleParsed[property][i] = null;
 
-                            var options = {
-                                parentElement: that,
-                                style: ig.copy(that.styles.background[i].style)
-                            };
-                            ig.merge(options, that.styles.background[i]);
-                            that.styleParsed[property][i] = new ig.gui.Background(options);
+                            if (typeof that.styleParsed[property][i] === 'object') {
+
+                                //delete that.styleParsed[property][i];
+                                //that.styleParsed[property][i] = null;
+
+                                var options = {
+                                    parentElement: that,
+                                    style: ig.copy(that.styles.background[i].style)
+                                };
+                                ig.merge(options, that.styles.background[i]);
+
+                                that.styleParsed[property][i] = new ig.gui.Background(options);
+                            }
                         }
 
                         break;
