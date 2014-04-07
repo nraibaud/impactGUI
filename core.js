@@ -223,7 +223,11 @@ ig.module(
                     ig.gui.styleSheets.init.apply(element);
                 }
 
+                this.onAdd();
+
                 return this;
+            },
+            onAdd: function () {
             },
             injectBefore: function () {
 
@@ -246,6 +250,7 @@ ig.module(
                 return this;
             },
             reset: function (options) {
+                this.reseted = true;
                 this.removeAllChildren().init(options);
                 return this;
             },

@@ -29,7 +29,11 @@ ig.module(
                 ig.merge(this, options)
             },
             share: function (type) {
-                ig.global.open(API[type].url + this.url);
+                if (ig.global.open) {
+                    ig.global.open(API[type].url + this.url);
+                } else {
+                    CocoonJS.App.openURL(API[type].url + this.url);
+                }
             }
         });
 
