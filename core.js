@@ -476,8 +476,16 @@ ig.module(
         });
 
 
-        ig.gui.Game = ig.Game.extend({
+        /* Extend ig.Game */
+        ig.Game.inject({
             clearColor: "#fff",
+            execNextFrame: [],
+            _execOnNextFrame: function () {
+                for (var i = 0; i < this.execNextFrame.length; i++) {
+                    this.execNextFrame[i]();
+                }
+                this.execNextFrame = [];
+            },
             init: function (options) {
                 if (this.parent) {
                     this.parent(options);
@@ -486,6 +494,7 @@ ig.module(
             update: function () {
                 ig.gui.canvas.update();
                 this.parent();
+                this._execOnNextFrame();
             },
             draw: function () {
                 ig.gui.clear();
