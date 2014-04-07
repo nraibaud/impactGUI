@@ -25,13 +25,25 @@ ig.module(
                     height: parseInt(this.styleParsed['font-size'])
                 }
             },
-            draw: function () {
+            update: function () {
+                var size;
+
+                ig.gui.styleSheets.init.call(this);
+
+                this.ctx.font = this.styleParsed['font-size'] + ' Huggable';// Huggable'; //Fontdinerdotcom // todo dynamise
+                this.ctx.fillStyle = this.styleParsed.color;
+
+                size = this.getSize(this.content);
+
+                this.style.width = this.styles.width != 'auto' ? this.styles.width : size.width;
+                this.style.height = this.styles.height != 'auto' ? this.styles.height : size.height;
 
                 this.parent();
 
-                var size;
+            },
+            draw: function () {
 
-                size = this.getSize(this.content);
+                this.parent();
 
                 this.ctx.font = this.styleParsed['font-size'] + ' Huggable';// Huggable'; //Fontdinerdotcom // todo dynamise
                 this.ctx.fillStyle = this.styleParsed.color;
@@ -40,11 +52,6 @@ ig.module(
 
                 this.ctx.fillText(this.content, this.styleParsed.left, this.styleParsed.top);
                 this.ctx.strokeText(this.content, this.styleParsed.left, this.styleParsed.top);
-
-                this.style.width = this.styles.width != 'auto' ? this.styles.width : size.width;
-                this.style.height = this.styles.height != 'auto' ? this.styles.height : size.height;
-
-                ig.gui.styleSheets.init.call(this);
 
 
             }

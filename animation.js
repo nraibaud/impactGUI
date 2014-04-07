@@ -47,6 +47,7 @@ ig.module(
                 this.element = element;
                 this.duration = duration / 1000;
                 this.timer = new ig.Timer();
+                this.initStyles = ig.copy(that.styles);
                 this.stylesToApply = styles;
 
                 this.parent();
@@ -54,6 +55,7 @@ ig.module(
                 _.each(this.stylesToApply, function (v, k) {
                     that.startValues[k] = that.element.styleParsed[k];
                     that.endValues[k] = ig.gui.parse.apply(that.element, [v, k]);
+                    ig.gui.parse.apply(that.element, [that.initStyles[k], k]);
                     that.values[k] = that.endValues[k] - that.startValues[k];
                 });
 
