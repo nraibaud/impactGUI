@@ -1,4 +1,3 @@
-// todo tools
 // todo HTML5 FORM
 // todo html5 API
 // todo promise
@@ -69,7 +68,8 @@ ig.module(
         'plugins.gui.elements.text',
         'plugins.gui.widgets.draganddrop',
         'plugins.gui.widgets.scrollbar',
-        'plugins.gui.widgets.share'
+        'plugins.gui.widgets.share',
+        'plugins.gui.tools'
     )
     .defines(function () {
         'use strict';

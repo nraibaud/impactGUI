@@ -2,7 +2,8 @@ ig.module(
         'plugins.gui.widgets.share'
     )
     .requires(
-        'plugins.gui.core'
+        'plugins.gui.core',
+        'plugins.gui.tools'
     )
     .defines(function () {
         'use strict';
@@ -29,11 +30,7 @@ ig.module(
                 ig.merge(this, options)
             },
             share: function (type) {
-                if (ig.global.open) {
-                    ig.global.open(API[type].url + this.url);
-                } else {
-                    CocoonJS.App.openURL(API[type].url + this.url);
-                }
+                ig.gui.tools.openUrl(API[type].url + this.url);
             }
         });
 
