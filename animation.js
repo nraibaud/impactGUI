@@ -92,9 +92,10 @@ ig.module(
                         that.element.style[k] = that.element.styleParsed[k] = that.endValues[k];
                     }
 
-                    ig.gui.redraw(that.element);
 
                 });
+
+                this.element.redraw();
 
 
                 if (that.timer.delta() >= that.duration) {
@@ -109,6 +110,7 @@ ig.module(
             draw: function () {
 
                 this.onDraw();
+
 
                 //ig.gui.styleSheets.draw.call(this);
 

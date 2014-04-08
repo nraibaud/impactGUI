@@ -146,7 +146,7 @@ ig.module(
 
                 /* Update stylesheets */
                 // 2014 , removed because take too much resource
-                ig.gui.styleSheets.init.apply(this);
+                //ig.gui.styleSheets.init.apply(this);
 
 
                 /* Update animation */

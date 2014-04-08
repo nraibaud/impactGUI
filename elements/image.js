@@ -248,6 +248,8 @@ ig.module(
                         this.ctx.save();
                         this.ctx.scale(this.styleParsed.ratio, this.styleParsed.ratio);
                         _.each(this.styleParsed.tile, function (tile, i) {
+
+
                             that.img.drawTile((that.styleParsed.left / that.styleParsed.ratio + (i * that.styleParsed.tileSize)), that.styleParsed.top / that.styleParsed.ratio, tile, that.styleParsed.tileSize);
                         });
 

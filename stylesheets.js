@@ -144,6 +144,8 @@ ig.module(
                     return;
                 }
 
+
+
                 ig.gui.styleSheets.init.call(that);
 
                 // todo Add width and height to parent automatly (Useful for resized bg)
@@ -270,22 +272,27 @@ ig.module(
                         i = 0;
                         backgroundsLength = val.length;
 
+
                         for (i; i < backgroundsLength; i++) {
 
-                            if (typeof that.styleParsed[property][i] === 'object') {
 
-                                //delete that.styleParsed[property][i];
-                                //that.styleParsed[property][i] = null;
-
-                                var options = {
-                                    parentElement: that,
-                                    style: ig.copy(that.styles.background[i].style)
-                                };
-                                ig.merge(options, that.styles.background[i]);
-
-                                that.styleParsed[property][i] = new ig.gui.Background(options);
+                            if ( that.styleParsed[property][i] instanceof ig.gui.Background) {
+                                return;
                             }
+
+                            //delete that.styleParsed[property][i];
+                            //that.styleParsed[property][i] = null;
+
+                            var options = {
+                                parentElement: that,
+                                style: ig.copy(that.styles.background[i].style)
+                            };
+                            ig.merge(options, that.styles.background[i]);
+
+                            that.styleParsed[property][i] = new ig.gui.Background(options);
+
                         }
+
 
                         break;
                     case 'position':
@@ -518,6 +525,7 @@ ig.module(
 
                 that = this;
 
+
                 if (!this.visible) {
                     return;
                 }
@@ -533,6 +541,8 @@ ig.module(
                             case 'opacity':
                                 break;
                             case 'background':
+
+
                                 ig.gui.drawBackgrounds.call(that);
                                 break;
                         }
