@@ -14,14 +14,6 @@ ig.module(
             styleDefault: {
                 display: 'block',
                 height: 'auto'
-            },
-            draw: function () {
-                this.ctx.save();
-                this.ctx.clip();
-                // todo should be refactoring in order to clip background on layer shape
-                //ig.gui.drawBackgrounds.call(this);
-                this.ctx.restore();
-                this.parent();
             }
         });
     });

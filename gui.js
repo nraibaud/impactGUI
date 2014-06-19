@@ -66,88 +66,17 @@ ig.module(
         'plugins.gui.elements.video',
         'plugins.gui.elements.audio',
         'plugins.gui.elements.text',
-        /*'plugins.gui.elements.form.form',
-        'plugins.gui.elements.form.label',
-        'plugins.gui.elements.form.text',
-        'plugins.gui.elements.form.textarea',
-        'plugins.gui.elements.form.checkbox',
-        'plugins.gui.elements.form.radio',
-        'plugins.gui.elements.form.select',
-        'plugins.gui.elements.form.color',*/
         'plugins.gui.widgets.draganddrop',
         'plugins.gui.widgets.scrollbar',
-        'plugins.gui.widgets.share'
+        'plugins.gui.widgets.share',
+        'plugins.gui.tools'
     )
     .defines(function () {
         'use strict';
 
         ig.gui = ig.gui || {};
 
-        /*
-         0, match empty slot
-         X, match any tiles but not 0
-         (1 || 2), match tile number
-         */
-        ig.getFreeSlotsByPatterns = function (area, patterns) {
-
-            var pattern = patterns[0];
-            var patternRowsNumber = pattern.length;
-            var patternColsNumber = pattern[0].length;
-            var toMatch = patternRowsNumber * patternColsNumber;
-            var matched = 0;
-            var slots = [];
-            /*
-             getTile
-             * x *
-
-             total
-
-             push
-             */
-
-            //area = _.flatten(area);
-
-
-            // area rows
-            for (var i = 0; i < area.length; i++) {
-                matched = 0;
-                // area cols
-                for (var j = 0; j < area[i].length; j++) {
-                    matched = 0;
-                    var tile = area[i][j];
-
-
-                    // pattern rows
-                    for (var k = 0; k < patternRowsNumber; k++) {
-                        // pattern cols
-                        for (var l = 0; l < patternColsNumber; l++) {
-                            var nextTile = area[i + k] && typeof area[i + k][j + l] !== 'undefined'
-                                ? area[i + k][j + l]
-                                : null;
-                            var nextTilePattern = pattern[k][l];
-
-
-                            if (nextTile === nextTilePattern || (nextTilePattern === 'X' && nextTile > 0)) {
-
-                                matched++;
-
-                            }
-                        }
-                    }
-
-                    if (toMatch === matched) {
-                        slots.push({x: j, y: i});
-                    }
-
-
-                }
-            }
-
-            return slots;
-
-        };
-
-
+        ig.gui.debug = false;
 
     });
 

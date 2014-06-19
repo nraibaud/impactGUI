@@ -154,12 +154,12 @@ ig.module(
                     this.animation.update(this);
                 }
 
-                if (this.styleParsed.position === 'absolute' || this.styleParsed.position === 'relative') {
-                    // .call does not work so use self
-                    this.children.sort(function (a, b) {
-                        return self.sortByZindex(a, b);
-                    });
-                }
+                /*if (this.styleParsed.position === 'absolute' || this.styleParsed.position === 'relative') {
+                 // .call does not work so use self
+                 this.children.sort(function (a, b) {
+                 return self.sortByZindex(a, b);
+                 });
+                 }*/
 
                 /* Check events and update children */
                 if (this.type === 'canvas') {
@@ -172,6 +172,7 @@ ig.module(
 
             },
             draw: function () {
+
 
                 /* Do nothing if element is hidden */
                 if (!this.visible) {
@@ -186,19 +187,16 @@ ig.module(
                 }
 
                 /* Draw  stylesheets */
+                // todo should only called when redraw.
                 ig.gui.styleSheets.draw.call(this);
 
-                /* Draw children */
-                this.loopOnChildren(function () {
-                    this.draw();
-                });
+                if (this.type === 'canvas') {
+                    /* Draw children */
+                    this.loopOnChildren(function () {
+                        this.draw();
+                    });
+                }
 
-            },
-            _setGuid: function () {
-                this.guid = this._generateGuid();
-            },
-            _generateGuid: function () { // todo temp
-                return 0;
             },
             add: function (element) {
                 var self;
@@ -226,7 +224,11 @@ ig.module(
                     ig.gui.styleSheets.init.apply(element);
                 }
 
+                this.onAdd();
+
                 return this;
+            },
+            onAdd: function () {
             },
             injectBefore: function () {
 
@@ -244,12 +246,13 @@ ig.module(
                 this.children = _.without(this.children, element);
                 return this;
             },
-            removeAllChildren: function () {
+            removeAllChildren: function () { // todo remove events?
                 this.children = [];
                 return this;
             },
-            reset: function () {
-                this.removeAllChildren().init();
+            reset: function (options) {
+                this.reseted = true;
+                this.removeAllChildren().init(options);
                 return this;
             },
             addActions: function (actions) {
@@ -328,15 +331,15 @@ ig.module(
                     type = event[0];
                     action = event[1];
 
-                    // todo verifier si levent est dans le bon niveau
-                    // User call action
-                    if (ig.input[type](action, this, callback, properties) && this._isOnShapeArea() && !this._isOnStopPropagationChild(this)) {
+
+                    if (action && ig.input[type](action, this, callback, properties) && this._isOnShapeArea() && !this._isOnStopPropagationChild(this)) {
                         // todo zIndex, event mousenter,mouseover,mouseout,mouseleave
 
                         // todo remove , unbind events
                         // todo OFF
                         callback.call(this, properties);
                     }
+
                 }
             },
             _isOnStopPropagationChild: function (parent) {
@@ -420,16 +423,16 @@ ig.module(
                         return false;
                     }
                 } else {
+
                     if (
                         (ig.input.mouse.x >= (this.styleParsed.left)) && ( ig.input.mouse.x <= ((this.styleParsed.left) + this.styleParsed.width )) &&
                             (ig.input.mouse.y >= (this.styleParsed.top)) && ( ig.input.mouse.y <= ((this.styleParsed.top) + this.styleParsed.height))
                         ) {
-
-
                         return true;
-                    } else {
-                        return false;
                     }
+
+                    return false;
+
                 }
 
             },
@@ -450,30 +453,6 @@ ig.module(
             },
             getByType: function () {
 
-            },
-            transformTag: function (tagName) { // todo using tag
-                switch (tagName) {
-                    case 'LAYER' :
-                        break;
-                    case 'TEXT' :
-                        break;
-                    case 'AUDIO' :
-                        break;
-                    case 'VIDEO' :
-                        break;
-                    case 'FORM' :
-                        break;
-                    case 'INPUT_TEXT' :
-                        break;
-                    case 'TEXTAREA' :
-                        break;
-                    case 'RADIO' :
-                        break;
-                    case 'CHECKBOX' :
-                        break;
-                    case 'SELECT' :
-                        break;
-                }
             },
             addClass: function (className) {
                 this.class += ' ' + className;
@@ -503,8 +482,16 @@ ig.module(
         });
 
 
-        ig.gui.Game = ig.Game.extend({
+        /* Extend ig.Game */
+        ig.Game.inject({
             clearColor: "#fff",
+            execNextFrame: [],
+            _execOnNextFrame: function () {
+                for (var i = 0; i < this.execNextFrame.length; i++) {
+                    this.execNextFrame[i]();
+                }
+                this.execNextFrame = [];
+            },
             init: function (options) {
                 if (this.parent) {
                     this.parent(options);
@@ -513,6 +500,7 @@ ig.module(
             update: function () {
                 ig.gui.canvas.update();
                 this.parent();
+                this._execOnNextFrame();
             },
             draw: function () {
                 ig.gui.clear();
@@ -577,6 +565,14 @@ ig.module(
                     callback.call(shape, properties);
                     shape.mouseEnter = false;
                 }
+            },
+            keydown: function (event) {
+                this.event = event;
+                this.parent(event);
+            },
+            keyUp: function (event) {
+                this.event = event;
+                this.parent(event);
             }
 
         });

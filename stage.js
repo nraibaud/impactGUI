@@ -1,4 +1,3 @@
-// todo ig.core should extend ig.Game in order to add the game instance in a stage
 ig.module(
         'plugins.gui.stage'
     )
@@ -12,13 +11,15 @@ ig.module(
 
         ig.gui.Stage = ig.gui.Core.extend({
             type: 'stage',
-            stage: ig.gui.Game,
+            game: ig.gui.Game,
+            stageOptions: {},
             styleDefault: {
+                position: 'absolute',
                 display: 'block'
             },
             render: function () {
-                this.show().redraw();
-                ig.system.setGame(this.stage.extend(this.stageOptions));
+                this.stageOptions.stage = this;
+                ig.system.setGame(this.game.extend(this.stageOptions));
             }
         });
     });

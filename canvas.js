@@ -1,5 +1,3 @@
-// todo this module should be removed, all objects should be add on ig.game and core should extend ig.game instead
-
 ig.module(
         'plugins.gui.canvas'
     )

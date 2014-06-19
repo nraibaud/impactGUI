@@ -144,14 +144,18 @@ ig.module(
                     return;
                 }
 
-                ig.gui.styleSheets.init.call(that);
+                that.redraw();
 
                 // todo Add width and height to parent automatly (Useful for resized bg)
-
 
                 that.loopOnChildren(function () {
                     ig.gui.redraw.call(this);
                 });
+
+                if(ig.gui.debug) {
+                    console.info('UPDATE_STYLESHEET');
+                }
+
             },
             getRelativeParent: function () {
                 if (this.parentElement && this.parentElement.styleParsed.position === 'relative') {
@@ -247,6 +251,7 @@ ig.module(
             },
             parse: function (value, property) {
 
+
                 var val, parent, that;
 
                 // If value is a function, execute it
@@ -270,17 +275,27 @@ ig.module(
                         i = 0;
                         backgroundsLength = val.length;
 
+
                         for (i; i < backgroundsLength; i++) {
-                            delete that.styleParsed[property][i];
-                            that.styleParsed[property][i] = null;
+
+
+                            if (that.styleParsed[property][i] instanceof ig.gui.Background) {
+                                return;
+                            }
+
+                            //delete that.styleParsed[property][i];
+                            //that.styleParsed[property][i] = null;
 
                             var options = {
                                 parentElement: that,
                                 style: ig.copy(that.styles.background[i].style)
                             };
                             ig.merge(options, that.styles.background[i]);
+
                             that.styleParsed[property][i] = new ig.gui.Background(options);
+
                         }
+
 
                         break;
                     case 'position':
@@ -400,15 +415,15 @@ ig.module(
                         }
                         /* center */
                         else if (val === 'center') {
-                            val = (parent.styleParsed.width - this.styleParsed.width) / 2
+                            val = (parent.styleParsed.width - this.styleParsed.width) / 2;
                         }
 
                         var prev = ig.gui.styleSheets.getPreviousVisibleObject.call(that);
 
                         if (prev && that.styleParsed.position != 'absolute' && that.styleParsed.display === 'inline') {
-                          val += prev.styleParsed.left + prev.styleParsed.width;
+                            val += prev.styleParsed.left + prev.styleParsed.width;
                         } else {
-                           val += parent.styleParsed.left;
+                            val += parent.styleParsed.left;
                         }
 
                         break;
@@ -424,7 +439,7 @@ ig.module(
                         }
                         /* center */
                         else if (val === 'center') {
-                            val = (parent.styleParsed.height - this.styleParsed.height) / 2
+                            val = (parent.styleParsed.height - this.styleParsed.height) / 2;
                         }
 
 
@@ -505,6 +520,7 @@ ig.module(
                         break;
                 }
 
+
                 return val;
             },
             draw: function () {
@@ -515,6 +531,7 @@ ig.module(
                 if (!this.visible) {
                     return;
                 }
+
 
                 _.each(ig.gui.styleSheets.stylesDraw, function (property) {
                     if (that.styleParsed[property]) {
@@ -544,5 +561,4 @@ ig.module(
     }
 );
 
-// todo height,width auto,right,bottom
-// todo set height on image using ratio * img
+// todo height and width auto for all ,right,bottom
