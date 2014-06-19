@@ -144,7 +144,9 @@ ig.module(
                     return;
                 }
 
+
                 that.redraw();
+
 
                 // todo Add width and height to parent automatly (Useful for resized bg)
 
@@ -277,7 +279,6 @@ ig.module(
 
 
                         for (i; i < backgroundsLength; i++) {
-
 
                             if (that.styleParsed[property][i] instanceof ig.gui.Background) {
                                 return;
@@ -528,6 +529,7 @@ ig.module(
 
                 that = this;
 
+
                 if (!this.visible) {
                     return;
                 }
@@ -544,6 +546,8 @@ ig.module(
                             case 'opacity':
                                 break;
                             case 'background':
+
+
                                 ig.gui.drawBackgrounds.call(that);
                                 break;
                         }

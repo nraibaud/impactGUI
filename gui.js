@@ -79,5 +79,3 @@ ig.module(
         ig.gui.debug = false;
 
     });
-
-
